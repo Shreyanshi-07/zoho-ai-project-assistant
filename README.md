@@ -50,17 +50,17 @@ Zoho Projects API
 
 ### LOGIN
 
-![Login](screenshots/Login.png)
+![Login](screenshot/Login.png)
 
 ### Dashboard
 
-![Dashboard2](screenshots/Dashboard2.png)
+![Dashboard2](screenshot/Dashboard2.png)
 
 ### TASKS
 
-![Tasks](screenshots/Tasks.png)
+![Tasks](screenshot/Tasks.png)
 
-![MarkTasks](screenshots/MarkTasks.png)
+![MarkTasks](screenshot/MarkTasks.png)
 
 ---
 
