@@ -9,9 +9,21 @@ export default function ChatWindow() {
     {
         role: "assistant",
         content:
-        "Welcome to Zoho AI Project Assistant\n\nTry:\n• Show projects\n• Show tasks for AI SaaS\n• Mark task Build backend as Closed"
+    `Welcome to Zoho AI Project Assistant
+
+    Available Commands
+
+    📁 Show projects
+
+    📋 Show tasks for AI SaaS
+
+    ✅ Mark task Build backend as Closed
+
+    🧠 Remember that AI SaaS is my favorite project
+
+    Use the quick action buttons below to get started.`
     }
-  ]);
+    ]);
   
   const sendMessage = async () => {
 
@@ -69,7 +81,7 @@ export default function ChatWindow() {
     } catch (error) {
 
       console.error(error);
-      setLoading(false);
+      
       setMessages(prev => [
         ...prev,
         {
@@ -91,10 +103,10 @@ export default function ChatWindow() {
         {messages.map((msg, index) => (
           <div
             key={index}
-            className={`mb-3 p-3 rounded w-fit max-w-xl ${
+            className={`mb-3 p-3 rounded w-fit max-w-3xl ${
               msg.role === "user"
                 ? "bg-blue-600 ml-auto"
-                : "bg-slate-700"
+                :"bg-slate-700 border border-slate-600"
             }`}
           >
             <div className="whitespace-pre-line">
@@ -117,21 +129,30 @@ export default function ChatWindow() {
 
             <button
                 onClick={() => setInput("Show projects")}
-                className="px-3 py-1 bg-slate-700 rounded"
+                className="px-4 py-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition"
             >
                 Show Projects
             </button>
-
+            <button
+                onClick={() =>
+                    setInput(
+                    "Remember that AI SaaS is my favorite project"
+                    )
+                }
+                className="px-4 py-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition"
+                >
+                Memory Demo
+                </button>
             <button
                 onClick={() => setInput("Show tasks for AI SaaS")}
-                className="px-3 py-1 bg-slate-700 rounded"
+                className="px-4 py-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition"
             >
                 Show Tasks
             </button>
 
             <button
                 onClick={() => setInput("Mark task Build backend as Closed")}
-                className="px-3 py-1 bg-slate-700 rounded"
+                className="px-4 py-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition"
             >
                 Close Task
             </button>
@@ -154,8 +175,11 @@ export default function ChatWindow() {
           />
 
           <button
-            onClick={sendMessage}
-            className="px-6 bg-blue-600 rounded"
+             onClick={sendMessage}
+            disabled={loading}
+            className="px-6 bg-blue-600 rounded disabled:opacity-50"
+            
+            
           >
             Send
           </button>

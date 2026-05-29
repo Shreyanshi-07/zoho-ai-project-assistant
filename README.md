@@ -58,9 +58,9 @@ Zoho Projects API
 
 ### TASKS
 
-![Tasks](screenshot/Tasks.png)
+![Tasks](screenshot/Tasks1.png)
 
-![MarkTasks](screenshot/MarkTasks.png)
+![MarkTasks](screenshot/Tasks2.png)
 
 ---
 

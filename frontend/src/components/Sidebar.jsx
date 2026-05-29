@@ -1,8 +1,7 @@
 export default function Sidebar() {
   const projects = [
     "AI SaaS",
-    "Demo Project",
-    "Testing Project"
+    "TEST PROJECT"
   ];
 
   return (
@@ -19,6 +18,30 @@ export default function Sidebar() {
           {project}
         </div>
       ))}
+
+      <div className="mt-6 text-sm">
+        <h3 className="font-bold mb-2">
+          Features
+        </h3>
+
+        <div className="mb-1">✓ OAuth Login</div>
+        <div className="mb-1">✓ Project Listing</div>
+        <div className="mb-1">✓ Task Listing</div>
+        <div className="mb-1">✓ Task Updates</div>
+        <div className="mb-1">✓ Long-Term Memory</div>
+      </div>
+
+      {/* ADD THIS SECTION */}
+      <div className="mt-6 text-sm">
+        <h3 className="font-bold mb-2">
+          System Status
+        </h3>
+
+        <div>🟢 Zoho OAuth</div>
+        <div>🟢 LangGraph Agent</div>
+        <div>🟢 FastAPI Backend</div>
+        <div>🟢 Memory Active</div>
+      </div>
 
       <div className="p-4 text-xs text-slate-500 mt-4">
         Zoho AI Project Assistant
