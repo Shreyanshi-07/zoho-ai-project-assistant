@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.jsonl
+*.pyc
+# Build artifacts
+build/
+dist/
+wheels/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment variables
+.env
+.env.development
+.env.staging
+.env.production
+
+# Jupyter
+*.ipynb
+
+# Reports
+evals/reports/
+
+# Node
+node_modules/
+
+# IDEs
+.vscode/
+.idea/
+
+zohochatbot.db
