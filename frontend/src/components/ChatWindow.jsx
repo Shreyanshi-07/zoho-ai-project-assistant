@@ -98,7 +98,9 @@ export default function ChatWindow() {
             }`}
           >
             <div className="whitespace-pre-line">
-                {msg.content}
+                <div className="whitespace-pre-line">
+                    {msg.content}
+                    </div>
                 </div>
           </div>
         ))}

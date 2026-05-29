@@ -19,6 +19,12 @@ export default function Sidebar() {
           {project}
         </div>
       ))}
+
+      <div className="p-4 text-xs text-slate-500 mt-4">
+        Zoho AI Project Assistant
+        <br />
+        Version 1.0
+      </div>
     </div>
   );
 }
