@@ -50,19 +50,17 @@ Zoho Projects API
 
 ### LOGIN
 
-![LOGIN](screenshots/Login.png)
+![Login](screenshots/Login.png)
 
 ### Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+![dashboard](screenshots/dashboard.png)
 
-### Project Listing
+### TASKS
 
-![Projects](screenshots/Tasks.png)
+![Tasks](screenshots/Tasks.png)
 
-### Task Management
-
-![Tasks](screenshots/MarkTasks.png)
+![MarkTasks](screenshots/MarkTasks.png)
 
 ---
 
