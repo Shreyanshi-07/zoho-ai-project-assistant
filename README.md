@@ -54,7 +54,7 @@ Zoho Projects API
 
 ### Dashboard
 
-![dashboard](screenshots/dashboard.png)
+![Dashboard2](screenshots/Dashboard2.png)
 
 ### TASKS
 
