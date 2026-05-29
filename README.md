@@ -162,6 +162,8 @@ npm run dev -- --host 127.0.0.1
 
 - Project creation workflow is under development.
 - Human-in-the-loop confirmation workflow planned for future enhancement.
+- Human-in-the-loop confirmation workflow partially implemented.
+- Long-term memory infrastructure implemented using persistent storage, with further conversational memory improvements planned.
 
 ---
 
