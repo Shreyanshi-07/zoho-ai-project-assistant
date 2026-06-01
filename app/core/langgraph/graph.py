@@ -138,6 +138,8 @@ class LangGraphAgent:
             )
 
             # Determine next node based on whether there are tool calls
+            print("TYPE:", type(response_message))
+
             if isinstance(response_message, AIMessage) and response_message.tool_calls:
                 goto = "tool_call"
             else:
@@ -159,17 +161,15 @@ class LangGraphAgent:
     async def _tool_call(self, state: GraphState):
 
         tool_calls = state.messages[-1].tool_calls
-
+        print("ENTERED TOOL NODE")
+        print("TOOL CALLS:", tool_calls)
         outputs = []
 
         async def _execute_tool(tool_call: dict) -> ToolMessage:
 
             tool = self.tools_by_name[tool_call["name"]]
-
-            try:
-                result = await tool.ainvoke(tool_call["args"])
-            except Exception as e:
-                result = f"Tool execution failed: {str(e)}"
+            print("EXECUTING TOOL:", tool_call["name"])
+            result = await tool.ainvoke(tool_call["args"])
 
             return ToolMessage(
                 content=str(result),
@@ -181,10 +181,11 @@ class LangGraphAgent:
         if len(tool_calls) == 1:
             outputs = [await _execute_tool(tool_calls[0])]
         else:
-            outputs = list(
-                await asyncio.gather(
-                    *[_execute_tool(tc) for tc in tool_calls]
-                )
+            outputs = []
+
+        for tc in tool_calls:
+            outputs.append(
+                await _execute_tool(tc)
             )
 
         

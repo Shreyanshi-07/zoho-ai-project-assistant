@@ -2,7 +2,7 @@ from langchain_core.tools import tool
 import json
 from app.core.langgraph.tools.helpers import get_current_user
 from app.services.zoho_client import ZohoClient
-
+from app.core.langgraph.tools.ask_human import ask_human
 
 @tool
 async def update_task_status(
@@ -25,6 +25,7 @@ async def update_task_status(
     - exact task name
     - status
     """
+    print("UPDATE_TASK_STATUS STARTED")
     user = get_current_user()
 
     if not user:
@@ -86,6 +87,26 @@ async def update_task_status(
     status_id = STATUS_IDS.get(status)
     if not status_id:
         return f"Unknown status '{status}'"
+    print("ABOUT TO ASK HUMAN")
+
+    confirmation = ask_human.invoke(
+        {
+            "question": f"""
+    Please confirm task update.
+
+    Project: {project_name}
+    Task: {task_name}
+    New Status: {status}
+
+    Reply YES to continue.
+    """
+        }
+    )
+
+    print("HUMAN RESPONSE:", confirmation)
+
+    if confirmation.strip().upper() != "YES":
+        return "Task update cancelled."
     result = await client.update_task_status(
         project_id=project_id,
         task_id=task_id,

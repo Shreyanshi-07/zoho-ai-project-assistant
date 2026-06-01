@@ -61,7 +61,7 @@ export default function ChatWindow() {
 
       if (
         response.data.messages &&
-        response.data.messages.length > 1
+        response.data.messages.length > 0
       ) {
         botReply =
           response.data.messages[
