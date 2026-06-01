@@ -9,6 +9,7 @@ AI-powered project management assistant built using **React, FastAPI, LangGraph,
 - Zoho OAuth Login
 - Session-based authentication
 - Secure API access
+- Human-in-the-Loop Confirmation for Task Updates
 
 ### Query Agent
 
