@@ -1,6 +1,5 @@
-import { useState } from "react";
 import api from "../services/api";
-
+import { useState, useEffect } from "react";
 export default function ChatWindow() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,7 +23,25 @@ export default function ChatWindow() {
     Use the quick action buttons below to get started.`
     }
     ]);
-  
+  useEffect(() => {
+    function handleProjectSelect(event) {
+      setInput(
+        `Show tasks for ${event.detail}`
+      );
+    }
+
+    window.addEventListener(
+      "project-selected",
+      handleProjectSelect
+    );
+
+    return () => {
+      window.removeEventListener(
+        "project-selected",
+        handleProjectSelect
+      );
+    };
+  }, []);
   const sendMessage = async () => {
 
     if (!input.trim()) return;
