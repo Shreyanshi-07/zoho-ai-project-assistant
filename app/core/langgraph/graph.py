@@ -178,10 +178,7 @@ class LangGraphAgent:
             )
 
         # Run tools
-        if len(tool_calls) == 1:
-            outputs = [await _execute_tool(tool_calls[0])]
-        else:
-            outputs = []
+        outputs = []
 
         for tc in tool_calls:
             outputs.append(
@@ -286,7 +283,8 @@ class LangGraphAgent:
             # Run state check and memory search concurrently to save 200-500ms
             state = await graph.aget_state(config)
             relevant_memory = "No relevant memory found."
-
+            print("RESUMING GRAPH")
+            print("RESUME VALUE:", messages[-1].content)
             if state.next:
                 logger.info("resuming_interrupted_graph", session_id=session_id, next_nodes=state.next)
                 response = await graph.ainvoke(

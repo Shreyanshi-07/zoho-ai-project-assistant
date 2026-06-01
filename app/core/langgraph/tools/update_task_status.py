@@ -99,14 +99,20 @@ async def update_task_status(
     New Status: {status}
 
     Reply YES to continue.
+    Reply NO or CANCEL to abort.
     """
         }
     )
+    print("RAW CONFIRMATION:", repr(confirmation))
 
-    print("HUMAN RESPONSE:", confirmation)
+    confirmation = confirmation.strip().upper()
+    print("NORMALIZED CONFIRMATION:", repr(confirmation))
 
-    if confirmation.strip().upper() != "YES":
-        return "Task update cancelled."
+    if confirmation in ["NO", "CANCEL"]:
+        return "Task update cancelled by user."
+
+    if confirmation != "YES":
+        return "Invalid response. Task update cancelled."
     result = await client.update_task_status(
         project_id=project_id,
         task_id=task_id,
