@@ -113,6 +113,20 @@ class ZohoClient:
             endpoint,
             data=payload,
         )
+    async def create_project(
+        self,
+        project_name: str,
+    ):
+        endpoint = f"/portal/{self.portal_id}/projects/"
+
+        payload = {
+            "name": project_name
+        }
+
+        return await self.post(
+            endpoint,
+            data=payload,
+        )
     async def post(
         self,
         endpoint: str,
