@@ -17,7 +17,7 @@ class ZohoClient:
     async def get_projects(self):
 
         url = f"{self.base_url}/portal/{self.portal_id}/projects/"
-
+        
         async with httpx.AsyncClient() as client:
 
             response = await client.get(
@@ -26,7 +26,8 @@ class ZohoClient:
             )
 
         return response.json()
-
+    
+        
     async def get_tasks(self, project_id: str):
 
         url = (
@@ -97,16 +98,17 @@ class ZohoClient:
         response.raise_for_status()
 
         return response.json()
-    async def create_project(
+    async def create_task(
         self,
-        project_name: str,
+        project_id: str,
+        task_name: str,
     ):
-        endpoint = f"/portal/{self.portal_id}/projects/"
+        endpoint = f"/portal/{self.portal_id}/projects/{project_id}/tasks/"
 
         payload = {
-            "name": project_name
+            "name": task_name
         }
-
+        
         return await self.post(
             endpoint,
             data=payload,
@@ -118,17 +120,20 @@ class ZohoClient:
     ):
         import httpx
 
-        headers=self.headers
-
         url = f"{self.base_url}{endpoint}"
-        
+
         async with httpx.AsyncClient() as client:
 
             response = await client.post(
                 url,
                 headers=self.headers,
-                json=data
+                data=data
             )
+
+        print("POST URL:", url)
+        print("POST PAYLOAD:", data)
+        print("STATUS:", response.status_code)
+        print("BODY:", response.text)
 
         response.raise_for_status()
 

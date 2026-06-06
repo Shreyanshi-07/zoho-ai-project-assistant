@@ -7,3 +7,4 @@ class UserToken(SQLModel, table=True):
     refresh_token: str
     expires_at: datetime
     portal_id: str
+

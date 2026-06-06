@@ -14,6 +14,7 @@ export default function ChatWindow() {
 
     📁 Show projects
 
+    
     📋 Show tasks for AI SaaS
 
     ✅ Mark task Build backend as Closed

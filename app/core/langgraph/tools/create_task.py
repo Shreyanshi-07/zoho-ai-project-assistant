@@ -29,7 +29,7 @@ async def create_task(project_name: str, task_name: str) -> str:
         access_token=user.access_token,
         portal_id=user.portal_id,
     )
-
+    
     projects_data = await client.get_projects()
 
     projects = projects_data.get("projects", [])
@@ -59,6 +59,7 @@ async def create_task(project_name: str, task_name: str) -> str:
     """
         }
     )
+    tasklists = await client.get_tasklists(project_id)
 
     confirmation = confirmation.strip().upper()
 
@@ -72,8 +73,9 @@ async def create_task(project_name: str, task_name: str) -> str:
         task_name=task_name,
     )
 
+    print("CREATE TASK RESPONSE")
     print(response)
-
+    
     return json.dumps({
         "success": True,
         "project_name": project_name,
